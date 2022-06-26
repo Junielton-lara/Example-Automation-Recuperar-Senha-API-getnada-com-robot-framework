@@ -1,0 +1,31 @@
+*** Settings ***
+Library  getnada_library.py
+
+*** Test Cases ***
+teste
+  ${response}  Get MailBox  
+  ...  mail=93410484272@robot-mail.com  
+  ...  tittle=Bem-vindo ao Arlequim
+  Log To Console    ${response}
+
+  ${has attachments}  Has Attachments    message_id=${response[0]['uid']}
+  Log To Console    ${has attachments}
+
+  ${attachments}  Get Attachments    message_id=${response[0]['uid']}
+  Log To Console    ${attachments}
+
+  ${file}  Download Attachment
+  ...  message_id=${response[0]['uid']}  
+  ...  attachment=${attachments[0]}
+  # ...  path=${EXECDIR}
+  Log To Console    ${file}
+
+  ${content}  Get Raw Message
+  ...  message_id=${response[0]['uid']}
+  ...  xpath=//a[contains(text(), 'Clique') and contains(text(), 'aqui')]
+  ...  attribute_name=href
+
+  Log To Console    ${content}
+
+  ${mail}  Generate Random Mail
+  Log To Console  ${mail}
