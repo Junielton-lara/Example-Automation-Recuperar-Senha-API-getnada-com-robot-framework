@@ -1,4 +1,4 @@
-# Example-Automaxion-Recuperar-Senha---API-getnada
+# Example-Automation-Recuperar-Senha---API-getnada
 Example-Automaxion Recuperar Senha - API getnada
 
 1º Utilizar Email deste serviço
